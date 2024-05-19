@@ -1,7 +1,9 @@
 package pr2;
 import java.util.Set;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.Map;
+import java.util.Queue;
 import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
@@ -13,6 +15,7 @@ import java.util.ArrayList;
  *
  * @param <V> el tipo de los vértices del grafo
  */
+
 public class Grafo<V> {
 
     private Map<V, Set<V>> listaAdyacencia = new HashMap<>();
@@ -97,51 +100,40 @@ public class Grafo<V> {
      * @return una lista de vértices que representa el camino más corto desde inicio hasta fin
      */
     public List<V> caminoMasCorto(V inicio, V fin) {
-        Map<V, Integer> distancias = new HashMap<>();
         Map<V, V> padres = new HashMap<>();
         Set<V> visitados = new HashSet<>();
+        Queue<V> cola = new LinkedList<>();
 
-        for (V v : listaAdyacencia.keySet()) {
-            distancias.put(v, Integer.MAX_VALUE);
-        }
-        distancias.put(inicio, 0);
+        visitados.add(inicio);
+        cola.add(inicio);
 
-        while (!visitados.contains(fin)) {
-            V actual = null;
-            int distanciaMinima = Integer.MAX_VALUE;
-            for (V v : listaAdyacencia.keySet()) {
-                if (!visitados.contains(v) && distancias.get(v) < distanciaMinima) {
-                    actual = v;
-                    distanciaMinima = distancias.get(v);
-                }
-            }
+        while (!cola.isEmpty()) {
+            V actual = cola.remove();
 
-            if (actual == null) {
+            if (actual.equals(fin)) {
                 break;
             }
 
-            visitados.add(actual);
-
             for (V adyacente : listaAdyacencia.get(actual)) {
-                int distancia = distancias.get(actual) + 1;
-                if (distancia < distancias.get(adyacente)) {
-                    distancias.put(adyacente, distancia);
+                if (!visitados.contains(adyacente)) {
+                    cola.add(adyacente);
+                    visitados.add(adyacente);
                     padres.put(adyacente, actual);
                 }
             }
         }
 
-        List<V> camino = new ArrayList<>();
+        if (!padres.containsKey(fin)) {
+            return new ArrayList<>(); 
+        }
 
+        List<V> camino = new ArrayList<>();
         V actual = fin;
         while (actual != null) {
             camino.add(0, actual);
             actual = padres.get(actual);
-
         }
 
         return camino;
     }
 }
-
- 
