@@ -1,4 +1,4 @@
-# Camino más corto entre dos Vertices
+# Camino más corto entre dos Vertices 
 
 Este proyecto implementa una clase Grafo genérica en Java. La clase Grafo permite agregar vértices, agregar aristas, obtener los vértices adyacentes, verificar si contiene un vértice y encontrar el camino más corto entre dos vértices.
 
@@ -28,7 +28,7 @@ Para empaquetar el proyecto en un archivo JAR, usa el comando `mvn package`. El 
 
 ## Licencia
 
-Este proyecto está licenciado bajo los términos de la licencia Apache 2.0. LICENSIA[LICENSE].
+Este proyecto está licenciado bajo los términos de la licencia Apache 2.0. LICENSE[LICENSE].
 
 ## Propietario
 
@@ -36,5 +36,5 @@ Este proyecto es propiedad de Flavia Mendez.
 
 ## Fecha
 
-Este documento fue creado el [17-05-2004].
+Este documento fue creado el [17-05-2024].
 
