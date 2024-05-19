@@ -36,5 +36,5 @@ Este proyecto es propiedad de Flavia Mendez.
 
 ## Fecha
 
-Este documento fue creado el [INSERTAR FECHA AQUÍ]. Por favor, reemplace [17-05-2004] con la fecha actual.
+Este documento fue creado el [17-05-2004].
 
